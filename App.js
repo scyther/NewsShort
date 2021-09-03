@@ -1,21 +1,8 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet, Text, View} from 'react-native';
+import RootNavigator from './src/navigation/RootNavigator';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <StatusBar />
-      <View style={styles.container}>
-        <Text>Hi</Text>
-      </View>
-    </SafeAreaView>
-  );
+  return <RootNavigator />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
