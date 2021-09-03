@@ -2,6 +2,11 @@
 A React-Native App that shows personlized catchy news feed 
 
 
-##Developer Docs
+### Developer Docs
 
-# ```npm run android``` to run in emulator or connected android device.
+#
+ To run in emulator or connected android device:
+ ```c
+ npm run android
+ ``` 
+ 
