@@ -1,4 +1,4 @@
-package com.newsshort;
+package com.djamware.newsshort;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 
