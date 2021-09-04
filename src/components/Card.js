@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const Card = () => {
   return (
@@ -21,18 +23,18 @@ const Card = () => {
 
       <View style={styles.row}>
         <View style={styles.eContainer}>
-          <Text style={styles.emoji}>👎</Text>
+          <AntIcon name="dislike2" size={40} color="red" />
         </View>
         <View
           style={[
             styles.eContainer,
             {borderLeftWidth: 1, borderRightWidth: 1},
           ]}>
-          <Text style={styles.emoji}>🔖</Text>
+          <Icon name="bookmark" size={40} />
         </View>
 
         <View style={styles.eContainer}>
-          <Text style={styles.emoji}>👍</Text>
+          <AntIcon name="like2" size={40} color="green" />
         </View>
       </View>
     </View>
@@ -48,8 +50,8 @@ const styles = StyleSheet.create({
     width: 350,
     height: 650,
     borderRadius: 20,
-    borderWidth: 4,
-    backgroundColor: '#FAF9F6',
+    borderWidth: 2,
+    backgroundColor: '#FAFAFA',
     borderColor: '#18191A',
   },
   cardsText: {
