@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#242B2E',
+    borderWidth: 3,
   },
   thumbsUp: {
     position: 'absolute',
@@ -76,6 +78,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 100,
     borderWidth: 0,
+  },
+  bookmark: {
+    position: 'absolute',
   },
   emoji: {
     fontSize: 100,
