@@ -14,5 +14,6 @@ export default CardsEnd;
 const styles = StyleSheet.create({
   textColor: {
     color: 'white',
+    fontSize: 20,
   },
 });

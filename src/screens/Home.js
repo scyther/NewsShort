@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import SwipeCards from 'react-native-swipe-cards-deck';
 
@@ -6,14 +6,23 @@ import CardsEnd from '../components/CardsEnd';
 import Card from '../components/Card';
 
 const Home = () => {
-  const [feed, setFeed] = useState([
-    {text: 'Tomato', backgroundColor: 'red'},
-    {text: 'Aubergine', backgroundColor: 'purple'},
-    {text: 'Courgette', backgroundColor: 'green'},
-    {text: 'Blueberry', backgroundColor: 'blue'},
-    {text: 'Umm...', backgroundColor: 'cyan'},
-    {text: 'orange', backgroundColor: 'orange'},
-  ]);
+  const [feed, setFeed] = useState();
+
+  const getFeed = async () => {
+    try {
+      const response = await fetch(
+        `https://newshort.herokuapp.com/news?cat=Politics`,
+      );
+      const json = await response.json();
+      setFeed(json);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getFeed();
+  }, []);
 
   const handleYes = card => {
     console.log(`Yup for ${card.text}`);

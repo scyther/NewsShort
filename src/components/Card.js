@@ -1,26 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import moment from 'moment';
 
-const Card = () => {
+const Card = ({data}) => {
   return (
     <View style={styles.card}>
-      <Image
-        source={require('../assets/img1.jpg')}
-        width={300}
-        height={500}
-        style={styles.image}
-      />
       <View style={styles.headline}>
-        <Text style={styles.cardsText}>
-          <Text style={styles.bold}>GTA 6 leaks:</Text> Here are the Top 3 GTA 6
-          leaks we know as of now
-        </Text>
-        <Button title="View More" style={styles.button} />
+        <Text style={styles.title}>{data.title}</Text>
+        <View style={styles.chips}>
+          <View style={styles.chip}>
+            <Text>{data.category}</Text>
+          </View>
+          <View style={styles.chip}>
+            <Text>{moment(data.date).format('MMM Do YYYY')}</Text>
+          </View>
+        </View>
       </View>
-
+      <View style={styles.contentContainer}>
+        <Text style={styles.contentText}>{data.content}</Text>
+      </View>
       <View style={styles.row}>
         <View style={styles.eContainer}>
           <AntIcon name="dislike2" size={40} color="red" />
@@ -30,7 +31,9 @@ const Card = () => {
             styles.eContainer,
             {borderLeftWidth: 1, borderRightWidth: 1},
           ]}>
-          <Icon name="bookmark" size={40} />
+          <TouchableOpacity onPress>
+            <Icon name="bookmark" size={40} />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.eContainer}>
@@ -45,37 +48,51 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     width: 350,
     height: 650,
     borderRadius: 20,
-    borderWidth: 2,
+    borderWidth: 3,
     backgroundColor: '#FAFAFA',
-    borderColor: '#18191A',
+    borderColor: 'orange',
   },
-  cardsText: {
+  title: {
     fontSize: 17,
     color: '#1a1a1a',
     marginBottom: 10,
     fontFamily: 'Roboto Condensed',
-    fontWeight: 'normal',
     fontStyle: 'italic',
-  },
-  bold: {
     fontWeight: 'bold',
   },
-  image: {
-    width: 320,
-    height: 400,
-    borderRadius: 20,
-    marginTop: 'auto',
+  chips: {
+    flexDirection: 'row',
   },
+
+  chip: {
+    borderWidth: 1,
+    alignSelf: 'flex-start',
+    paddingVertical: 2,
+    paddingHorizontal: 7,
+    borderRadius: 30,
+    backgroundColor: '#5EBA7D',
+    marginHorizontal: 4,
+  },
+
   headline: {
-    width: 320,
     padding: 10,
     backgroundColor: '#FAF9F6',
-    height: 130,
+    marginTop: 15,
+  },
+  contentContainer: {
+    backgroundColor: 'orange',
+    padding: 10,
+    flex: 2,
+    overflow: 'hidden',
+  },
+  contentText: {
+    fontSize: 15,
+    fontFamily: 'Roboto Condensed',
   },
   row: {
     display: 'flex',
