@@ -12,7 +12,8 @@ const Card = () => {
       />
       <View style={styles.headline}>
         <Text style={styles.cardsText}>
-          GTA 6 leaks: Here are the Top 3 GTA 6 leaks we know as of now
+          <Text style={styles.bold}>GTA 6 leaks:</Text> Here are the Top 3 GTA 6
+          leaks we know as of now
         </Text>
         <Button title="View More" style={styles.button} />
       </View>
@@ -46,9 +47,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#CAD5E2',
   },
   cardsText: {
-    fontSize: 22,
+    fontSize: 17,
     color: 'white',
     marginBottom: 10,
+    fontFamily: 'Roboto Condensed',
+    fontWeight: 'normal',
+    fontStyle: 'italic',
+  },
+  bold: {
+    fontWeight: 'bold',
   },
   image: {
     width: 350,
