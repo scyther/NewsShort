@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const CardsEnd = () => {
+const CardsEnd = ({text}) => {
   return (
     <View>
-      <Text>NO More Cards.........</Text>
+      <Text>{text}</Text>
     </View>
   );
 };
