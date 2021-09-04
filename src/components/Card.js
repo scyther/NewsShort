@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 4,
     backgroundColor: '#FAF9F6',
-    borderColor: '#758283',
+    borderColor: '#18191A',
   },
   cardsText: {
     fontSize: 17,
