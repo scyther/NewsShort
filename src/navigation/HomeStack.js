@@ -17,7 +17,7 @@ export default function HomeStack() {
         name="Home"
         component={Home}
         options={({navigation}) => ({
-          title: 'NewsShort',
+          title: 'NewShort',
           headerStyle: {
             backgroundColor: '#097B71',
           },

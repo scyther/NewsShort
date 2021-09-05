@@ -1,15 +1,19 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Linking, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const BookmarkItem = ({item}) => {
+  console.log(item);
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <Text style={styles.cardsText}>{item.title}</Text>
       </View>
 
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          Linking.openURL(item.url);
+        }}>
         <Icon name="newspaper-o" size={40} />
       </TouchableOpacity>
     </View>

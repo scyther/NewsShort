@@ -15,6 +15,7 @@ const Card = ({data}) => {
       title: 'string',
       date: 'string',
       content: 'string',
+      url: 'string',
     },
     primaryKey: 'date',
   };
@@ -32,6 +33,7 @@ const Card = ({data}) => {
         title: data.title,
         date: data.date,
         content: data.content,
+        url: data.url,
       });
     });
   };

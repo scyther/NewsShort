@@ -6,22 +6,50 @@ import CardsEnd from '../components/CardsEnd';
 import Card from '../components/Card';
 
 const Home = () => {
-  const [feed, setFeed] = useState();
-
-  const getFeed = async () => {
+  const [feed, setFeed] = useState([]);
+  var feeds = [];
+  const getFeed = async category => {
     try {
       const response = await fetch(
-        `https://newshort.herokuapp.com/news?cat=Politics`,
+        `https://newshort.herokuapp.com/news?cat=${category}`,
       );
       const json = await response.json();
-      setFeed(json);
+      feeds = [...feeds, ...json];
+      console.log(feeds);
+      shuffle();
     } catch (error) {
       console.error(error);
     }
   };
 
+  const shuffle = () => {
+    var array = feeds;
+    var currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+    console.log(array);
+    setFeed(array);
+  };
+
   useEffect(() => {
-    getFeed();
+    getFeed('Business');
+    getFeed('India');
+    getFeed('Sports');
+    getFeed('Politics');
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleYes = card => {
@@ -36,7 +64,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      {feed ? (
+      {feed.length !== 0 ? (
         <SwipeCards
           cards={feed}
           renderCard={cardData => <Card data={cardData} />}
