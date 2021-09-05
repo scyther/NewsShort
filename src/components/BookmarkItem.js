@@ -6,10 +6,7 @@ const BookmarkItem = ({item}) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.cardsText}>
-          <Text style={styles.bold}>GTA 6 leaks:</Text> Here are the Top 3 GTA 6
-          leaks we know as of now
-        </Text>
+        <Text style={styles.cardsText}>{item.title}</Text>
       </View>
 
       <TouchableOpacity>
@@ -29,6 +26,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 5,
     padding: 5,
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor: 'orange',
   },
   bold: {
     fontWeight: 'bold',

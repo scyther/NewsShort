@@ -5,7 +5,36 @@ import Icon from 'react-native-vector-icons/Entypo';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import moment from 'moment';
 
+//realm
+import Realm from 'realm';
+
 const Card = ({data}) => {
+  const bmarkSchema = {
+    name: 'bmark',
+    properties: {
+      title: 'string',
+      date: 'string',
+      content: 'string',
+    },
+    primaryKey: 'date',
+  };
+
+  const handleBookmark = async () => {
+    const realm = await Realm.open({
+      path: 'bmark',
+      schema: [bmarkSchema],
+    });
+    let task;
+
+    realm.write(() => {
+      // eslint-disable-next-line no-unused-vars
+      task = realm.create('bmark', {
+        title: data.title,
+        date: data.date,
+        content: data.content,
+      });
+    });
+  };
   return (
     <View style={styles.card}>
       <View style={styles.headline}>
@@ -31,7 +60,10 @@ const Card = ({data}) => {
             styles.eContainer,
             {borderLeftWidth: 1, borderRightWidth: 1},
           ]}>
-          <TouchableOpacity onPress>
+          <TouchableOpacity
+            onPress={() => {
+              handleBookmark();
+            }}>
             <Icon name="bookmark" size={40} />
           </TouchableOpacity>
         </View>
